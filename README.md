@@ -1,6 +1,8 @@
-# entity-autocompletion
+# The Entity Autocompletion API
 
-The entity autocompletion, as explained in the API description, is made of two components (two running services):
+Currently available: http://node5.novello.isti.cnr.it:8888/
+
+The entity autocompletion is made of two components (two running services):
 * SORL service, which allows insertions and access to the SORL index containing the entities
 * REST service, which runs the web app for the demo enabling entity autocompletion.
 
@@ -10,8 +12,6 @@ In root run: `mvn clean; mvn package -DskipTests`
 In order to run the services, we create two separate screens (e.g. `screen -S sorl`) where we deploy the following bash scripts:
 * solr: `./scripts/start-solr-server.sh`
 * rest: `./scripts/start-rest-service.sh`
-
-Currently available: http://node5.novello.isti.cnr.it:8888/
 
 ***
 Settings for the web app (REST):
