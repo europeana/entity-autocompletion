@@ -18,5 +18,5 @@ Settings for the web app (REST):
 - `./src/main/webapp/WEB-INF/web.xml` - set the path to the REST service (the endpoint)
 - `./src/main/webapp/index.html` - set the scripts that make up the main page of the demo (.js) available in ./src/main/webapp/js
 - `./src/main/webapp/js/main.js` - contains the main functionality of the demo UI: 
-    * Bloodhound is a javascript lib for autocompletion
+    * [Bloodhound](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md) is a javascript lib for autocompletion
     * The REST API queries the actual services that have been implemented for the autocompletion (in Java) and set also in the sorlconfig.xml (e.g. the endpoint: `node5.novello.isti.cnr.it:8888/rest/jsonp/suggest.json`)
