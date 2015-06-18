@@ -13,10 +13,44 @@ In order to run the services, we create two separate screens (e.g. `screen -S so
 * solr: `./scripts/start-solr-server.sh`
 * rest: `./scripts/start-rest-service.sh`
 
+*** 
+###Testing and using the service.
+
+The API can be also tested by accessing: http://node5.novello.isti.cnr.it:8888/doc/, which offers as the main functionality the possibility to make a query and see the retrived responses. By clicking on the GET method (/jsonp/suggest.json - for english) we can view the parameters required for making API request: callback, query, rows, language. For example if we want to query the API for "Pic" we can view the request URL:
+
+ `http://node5.novello.isti.cnr.it:8888/rest/jsonp/suggest.json?query=pic&rows=10&language=en`
+
+and the response body:
+
+`{
+  "query": "pic",
+  "language": "en",
+  "totalResults": 40,
+  "itemCount": 10,
+  "suggestions": [
+    {
+      "prefLabel": {
+        "de": "Pablo Picasso",
+        "it": "Pablo Picasso",
+        "fr": "Pablo Picasso",
+        "en": "Pablo Picasso"
+      },
+      "uri": "http://data.europeana.eu/agent/Pablo_Picasso",
+      "image": "http://wikiname2image.herokuapp.com/Pablo_Picasso",
+      "type": "agent",
+      "search": "entity:http://data.europeana.eu/agent/Pablo_Picasso",
+      "europeana_df": 203,
+      "wikipedia_clicks": 134707,
+      "enrichment": 112
+    }, ... }`
+    
+Developers can use the endpoint: `node5.novello.isti.cnr.it:8888/rest/jsonp/suggest.json` to retrieve entity suggestions according to the previous example.
+
 ***
-Settings for the web app (REST):
+### Settings for the web app (REST):
 - `./src/main/webapp/WEB-INF/web.xml` - set the path to the REST service (the endpoint)
 - `./src/main/webapp/index.html` - set the scripts that make up the main page of the demo (.js) available in ./src/main/webapp/js
 - `./src/main/webapp/js/main.js` - contains the main functionality of the demo UI: 
     * [Bloodhound](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md) is a javascript lib for autocompletion
-    * The REST API queries the actual services that have been implemented for the autocompletion (in Java) and set also in the sorlconfig.xml (e.g. the endpoint: `node5.novello.isti.cnr.it:8888/rest/jsonp/suggest.json`)
+    * The REST API queries the actual services that have been implemented for the autocompletion (in Java). 
+ 
