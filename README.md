@@ -1,11 +1,11 @@
 # entity-autocompletion
-Entity autocompletion API and relevancy ranking algorithm 
 
 The entity autocompletion, as explained in the API description, is made of two components (two running services):
 * SORL service, which allows insertions and access to the SORL index containing the entities
 * REST service, which runs the web app for the demo enabling entity autocompletion.
 
-When making changes to the code, the module needs to be re-packaged. In root run: `mvn clean; mvn package -DskipTests`
+When making changes to the code, the module needs to be re-packaged. 
+In root run: `mvn clean; mvn package -DskipTests`
 
 In order to run the services, we create two separate screens (e.g. `screen -S sorl`) where we deploy the following bash scripts:
 * solr: `./scripts/start-solr-server.sh`
