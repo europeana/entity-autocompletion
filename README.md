@@ -13,6 +13,34 @@ In order to run the services, we create two separate screens (e.g. `screen -S so
 * solr: `./scripts/start-solr-server.sh`
 * rest: `./scripts/start-rest-service.sh`
 
+***
+### Setup and config
+
+How to enable the autosuggestion plugin on Tomcat:
+
+1.  Add a **new core** in SOLR: copy the configuration of the core from `https://github.com/europeana/entity-autocompletion/tree/master/solr/europeana/conf`, test that the core is working. 
+2.  The autosuggestion service will be a distinct service performing rest calls to the solr server, and at the same time providing a rest service. You can run it in two different ways:
+    * just running mvn package, that will generate a jar in the target folder, and then running the script `./scripts/run-rest-service.sh` (will start a jetty server, we can change the port in the script)
+    * deploying it into tomcat: change the pom.xml adding:
+        ```xml
+        <groupId\>it.cnr.isti.hpc\</groupId>
+        <artifactId\>entity-suggestions\</artifactId>
+        <packaging>war</packaging>
+        <version>${solr.version}</version>
+        ```
+        
+    * and comment out the line: 
+         ```xml
+         <!--goals>
+             <goal>shade</goal>
+         </goals-->
+         ```
+
+The mvn package will generate a **war** file in the target directory, that you can deploy in Tomcat. 
+
+**!** Please note that the uri of the solr server is hardcoded in the class 
+`https://github.com/europeana/entity-autocompletion/blob/master/src/main/java/eu/europeana/suggest/QueryCompletionClient.java` and currently is looking for the solr server on the localhost. 
+
 *** 
 ###Testing and using the service.
 
