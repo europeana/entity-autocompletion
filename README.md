@@ -1,3 +1,7 @@
+**This project is not maintained anymore**
+
+---
+
 # The Entity Autocompletion API
 
 Currently available: http://node5.novello.isti.cnr.it:8888/
